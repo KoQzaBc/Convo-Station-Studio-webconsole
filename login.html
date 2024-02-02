@@ -43,11 +43,32 @@
 
 <div class="form-container">
     <h2>Create Account</h2>
-    <form action="server/account.php" method="post">
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <input type="submit" value="Create Account">
-    </form>
+    <form id="accountForm" method="post">
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <input type="button" id="submitButton" value="Create Account">
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#submitButton').click(function(e) {
+        e.preventDefault(); // フォームの標準的な送信を防ぐ
+        $.ajax({
+            type: "POST",
+            url: "server/account.php",
+            data: $('#accountForm').serialize(), // フォームのデータをシリアライズ
+            success: function(response) {
+                // 成功した場合、ここで何かのアクション（例：リダイレクト）を行う
+                window.location.href = "/group/000102003/dm"; // リダイレクト
+            },
+            error: function() {
+                alert('Error occurred');
+            }
+        });
+    });
+});
+</script>
 </div>
 
 </body>
