@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // SQL実行
     if ($db->query($sql) === TRUE) {
         // アカウント作成成功後、指定したURLにリダイレクト
-        header("Location: /group/000102003/dm");
+        header("Location: /group/000102003/dm.html");
         exit(); // リダイレクト後、このスクリプトの実行を停止
     } else {
         echo "Error: " . $sql . "<br>" . $db->error;
